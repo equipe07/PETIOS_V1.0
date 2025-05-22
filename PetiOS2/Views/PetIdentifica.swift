@@ -12,6 +12,7 @@ struct PetIdentifica: View {
          
     var body: some View {
         NavigationStack{
+            Text("Oi")
             List{
                 ForEach(petidentifica.petidentifica)
                     {petAtual in
