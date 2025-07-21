@@ -25,7 +25,7 @@ struct PetiOS2App: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TelaPrincipal()
         }
         .modelContainer(sharedModelContainer)
     }

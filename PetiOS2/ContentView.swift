@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Image(systemName: "globe").imageScale(.large)
-            Text("Hello World!")
+            Text("PetiOS")
             HStack{
                 Text("Digite seu nome")
                 Button("Salvar"){

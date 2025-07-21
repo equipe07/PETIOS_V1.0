@@ -13,6 +13,7 @@ struct PetModel: Identifiable{
     var raça: String
     var nome: String
     var nascimento: String
+    var porte: String
     var sexo: String
     var cor: String
     var castrado: Bool

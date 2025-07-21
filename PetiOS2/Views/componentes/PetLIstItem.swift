@@ -22,7 +22,7 @@ struct PetLIstItem: View {
             VStack (alignment:.leading ){Text(pet.nome)
                     .bold()
                     .font(.system(size:25))
-                     
+                                    
             HStack{
                 Text(pet.raça)
                 Spacer()
@@ -44,6 +44,7 @@ struct PetLIstItem: View {
         raça: "Poodle",
         nome: "Tsuki",
         nascimento: "02/03/2024",
+        porte: "pequeno",
         sexo: "femea",
         cor: "branco",
         castrado: false,
