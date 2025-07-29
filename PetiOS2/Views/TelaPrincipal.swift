@@ -13,13 +13,24 @@ struct TelaPrincipal: View {
         NavigationStack {
         PetFundo {
             
-                VStack{
-                    NavigationLink(destination: MeusPets()) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 2           )
-                                .foregroundStyle(Color.appLaranjaClaro)
-                                .frame(width:300, height:50)
-                                .clipShape(RoundedRectangle(cornerRadius:10))
+            Image("img6")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200, height: 200)
+            .padding(.leading, 200)
+            .offset(x: -6)
+            .offset(y: 125)                 .foregroundColor(.gray)
+            
+            VStack{
+                    
+                NavigationLink(destination: MeusPets()) { ZStack {
+                RoundedRectangle(cornerRadius: 2           )
+                .foregroundStyle(Color.appLaranjaClaro)
+                .frame(width:300, height:50)
+                    
+                    
+                    
+                .clipShape(RoundedRectangle(cornerRadius:10))
                             Text("Meus Pets")
                                 .foregroundColor(.black)
                                 .font(.title)
