@@ -6,19 +6,30 @@
 //
 
 import Foundation
+import SwiftData
+
+@Observable
 
 class PetViewModel{
+    let myDateFormatter = DateFormatter()
+    init()
+    {
+        myDateFormatter.dateFormat = "dd/MM/yyyy"
+    }
+    
+    
     var pets: [PetModel] = [PetModel(
         especie: "cachorro",
-        raça: "Maltipoo",
+        raca: "Maltipoo",
         nome: "Sherlock Holmes",
-        nascimento: "19/06/2019",
+       // nascimento: DateComponents(year: 2019, month:06, day:26).date!,
+        nascimento: Calendar.current.date(from: DateComponents(year: 2020, month: 1, day: 1))!,
         porte: "pequeno",
-        sexo: "macho",
+        sexo: "macho",	
         cor: "branco",
         castrado: false,
-        falecido: false),
-                                    PetModel(
+        falecido: false)
+                                   /* PetModel(
                                         especie: "cachorro",
                                         raça: "Poodle",
                                         nome: "Tsuki",
@@ -68,7 +79,7 @@ class PetViewModel{
                                         sexo: "macho",
                                         cor: "verde",
                                         castrado: false,
-                                        falecido: true)
+                                        falecido: true) */
     ]
     
     

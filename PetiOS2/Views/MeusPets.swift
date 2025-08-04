@@ -22,7 +22,18 @@ struct MeusPets: View {
                 .frame(maxWidth: 500)
                 .scrollContentBackground(.hidden)
                 .background(.clear)
-                Botao(nomeBotao: "Adicionar", tela: CadastraPet(pet: PetModel(especie: "", raça: "", nome: "", nascimento: "01/01/2025", porte: "", sexo: "", cor: "", castrado: false, falecido: false) ))
+                Botao(nomeBotao: "Adicionar",
+                      tela: CadastraPet(pet: PetModel(
+                        especie: "",
+                        raca: "",
+                        nome: "",
+                        nascimento:Date(),
+                        porte: "",
+                        sexo: "",
+                        cor: "",
+                        castrado: false,
+                        falecido: false))
+                )
                
             } // fim do petfundo
         }//fim do navigation stack

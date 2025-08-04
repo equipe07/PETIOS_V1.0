@@ -19,7 +19,8 @@ struct TelaPrincipal: View {
             .frame(width: 200, height: 200)
             .padding(.leading, 200)
             .offset(x: -6)
-            .offset(y: 125)                 .foregroundColor(.gray)
+            .offset(y: 125)
+            .foregroundColor(.gray)
             
             VStack{
                     

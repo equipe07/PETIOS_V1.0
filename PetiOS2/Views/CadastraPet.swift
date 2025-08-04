@@ -30,14 +30,14 @@ struct CadastraPet: View {
         {
             _nomePet = State(initialValue: pet.nome)
             _titulo = State(initialValue: titulo)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            _nascimentoPet = State(initialValue: dateFormatter.date(from:pet.nascimento)!)
+            
+            _nascimentoPet = State(initialValue: pet.nascimento)
+           // _nascimentoPet = State(initialValue: pet.nascimento)
             _sexoPet = State(initialValue: pet.sexo.capitalized)
             _castradoPet = State(initialValue: pet.castrado)
             _corPet = State(initialValue: pet.cor.capitalized)
             _portePet = State(initialValue: pet.porte.capitalized)
-            _raçaPet = State(initialValue: pet.raça.capitalized)
+            _raçaPet = State(initialValue: pet.raca.capitalized)
             _especiePet = State(initialValue: pet.especie.capitalized)
         
         
@@ -107,6 +107,8 @@ struct CadastraPet: View {
                                 .foregroundStyle(Color.appLaranjaEscuro)
                                 .frame(width: 100, height:40)
                                 .clipShape(RoundedRectangle(cornerRadius:10))
+                            //PetViewModel.
+                            //context.insert(PetModel(especie: <#T##String#>, raça: <#T##String#>, nome: <#T##String#>, nascimento: <#T##Date#>, porte: <#T##String#>, sexo: <#T##String#>, cor: <#T##String#>, castrado: <#T##Bool#>, falecido: <#T##Bool#>))
                             Text("Confirmar")
                                 .foregroundColor(.black)
                                 .bold()
@@ -120,16 +122,16 @@ struct CadastraPet: View {
 }
 
 
-/*#Preview {
-    let meupet=PetModel(
+#Preview {
+    let meupet = PetModel(
         especie: "Cachorro",
-        raça: "Maltipoo",
+        raca: "Maltipoo",
         nome: "Sherlock Holmes",
-        nascimento: "19/06/2019",
+        nascimento:Calendar.current.date(from: DateComponents(year: 2020, month: 1, day: 1))!,
         porte: "pequeno",
         sexo: "macho",
         cor: "branco",
         castrado: false,
         falecido: false)
-    CadastraPet(pet:meupet)//nomePet: "Sherlock", especiePet: 1, sexoPet: "Macho") // Ahora funciona sin errores
-}*/
+    CadastraPet(pet:meupet)
+}

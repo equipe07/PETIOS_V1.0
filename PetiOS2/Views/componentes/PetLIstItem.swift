@@ -24,7 +24,7 @@ struct PetLIstItem: View {
                     .font(.system(size:25))
                                     
             HStack{
-                Text(pet.raça)
+                Text(pet.raca)
                 Spacer()
                 Text(pet.cor)
                 Spacer()
@@ -41,9 +41,9 @@ struct PetLIstItem: View {
 #Preview {
     PetLIstItem(pet:PetModel(
         especie: "cachorro",
-        raça: "Poodle",
+        raca: "Poodle",
         nome: "Tsuki",
-        nascimento: "02/03/2024",
+        nascimento: Calendar.current.date(from: DateComponents(year: 2020, month: 1, day: 1))!,
         porte: "pequeno",
         sexo: "femea",
         cor: "branco",

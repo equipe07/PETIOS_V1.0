@@ -6,18 +6,34 @@
 //
 
 import Foundation
+import SwiftData
 
-struct PetModel: Identifiable{
+@Model
+class PetModel{
     var id:UUID = UUID()
     var especie: String
-    var raça: String
+    var raca: String
     var nome: String
-    var nascimento: String
+    var nascimento: Date
     var porte: String
     var sexo: String
     var cor: String
     var castrado: Bool
     var falecido: Bool
+    
+    
+    init(especie: String, raca: String, nome: String, nascimento: Date, porte: String, sexo: String, cor: String, castrado: Bool, falecido: Bool) {
+        self.especie = especie
+        self.raca = raca
+        self.nome = nome
+        self.nascimento = nascimento
+        self.porte = porte
+        self.sexo = sexo
+        self.cor = cor
+        self.castrado = castrado
+        self.falecido = falecido
+    }
+    
     
 
     

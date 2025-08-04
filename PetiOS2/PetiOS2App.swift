@@ -10,9 +10,23 @@ import SwiftData
 
 @main
 struct PetiOS2App: App {
+   /* var container: ModelContainer = {
+        let schema = Schema([
+            PetModel.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }*/
+    
+    //Versao PetiOS2
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            PetModel.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,6 +36,7 @@ struct PetiOS2App: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+     
 
     var body: some Scene {
         WindowGroup {
@@ -29,4 +44,27 @@ struct PetiOS2App: App {
         }
         .modelContainer(sharedModelContainer)
     }
+     
+    
+    /* codigo ian
+    var container: ModelContainer =
+    {
+        let schema = Schema([PetModel.self])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        do
+        {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch
+        {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+        
+        var body: some Scene {
+            WindowGroup {
+                TelaPrincipal()
+            }
+            .modelContainer(container)
+        }*/
 }
