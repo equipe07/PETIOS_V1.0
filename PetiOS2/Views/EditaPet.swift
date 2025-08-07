@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct PetSalva: View {
-    @Environment(\.modelContext) var context
-    @Binding var petViewModel: PetViewModel?
-    
+    //@Environment(\.modelContext) private var context
+    //@Bindable var viewModel: PetViewModel
+    //@Binding viewModel: PetViewModel
+    //@Bindable petViewModel: PetViewModel()
+    @Bindable var listaPets: PetViewModel
+    @Environment(\.dismiss) private var dismiss
     @State var nomePet: String
     @State var nascimentoPet: Date
     @State var racaPet: String
@@ -28,9 +31,11 @@ struct PetSalva: View {
     @State private var sexos: [String] = ["Macho", "Fêmea"]
     
     @State var titulo: String
-    
-    init(pet: PetModel, titulo: String = "Cadastrar Pet" )
-    {
+    @State var petAtual:PetModel
+       
+    init(pet: PetModel, titulo: String = "Cadastrar Pet", listaPets: inout PetViewModel) {
+        _petAtual = State(initialValue: pet)
+        //_listaPets = petViewModel
         _nomePet = State(initialValue: pet.nome)
         _titulo = State(initialValue: titulo)
         _nascimentoPet = State(initialValue: pet.nascimento)
@@ -41,8 +46,8 @@ struct PetSalva: View {
         _portePet = State(initialValue: pet.porte.capitalized)
         _racaPet = State(initialValue: pet.raca.capitalized)
         _especiePet = State(initialValue: pet.especie.capitalized)
-        
-        
+        //self.petViewModel = viewModel
+        self.listaPets = listaPets
     }
     
     var body: some View {
@@ -95,46 +100,56 @@ struct PetSalva: View {
             .scrollContentBackground(.hidden)
             .background(.clear)
             
-            /*VStack {
-             Section{
-             TextField("Nome do Pet", text: $nomePet)
-             }
-             Section{
-             TextField("Espécie", text: $especiePet)
-             }
-             Section{
-             TextField("Raça", text: $racaPet)
-             }
-             Section{
-             Text("Sexo: ")
-             TextField("Sexo", text: $sexoPet)
-             }
-             Section{
-             DatePicker("Data de Nascimento", selection: $nascimentoPet)
-             }
-             Section{
-             TextField("Porte", text: $portePet)
-             }
-             Section{
-             TextField("Cor", text: $corPet)
-             }
-             Section{
-             Text("Castrado: ")
-             Toggle("", isOn: $castradoPet)
-             }*/
         } //fim Form
         
-        /*.toolbar{
-         ToolbarItem(placement: .topBarTrailing){
-         Button{
-         PetViewModel().MeusPets.append()
-         print("Pet adicionado com sucesso!")
-         }
-         }*/
+        Button{
+            let novoPet = PetModel(especie: especiePet, raca: racaPet,
+                                nome: nomePet,
+                                nascimento: nascimentoPet,
+                                porte: portePet,
+                                sexo: sexoPet,
+                                cor: corPet,
+                                castrado: castradoPet,
+                                falecido: false)
+            listaPets.editPet(original: petAtual, updated: novoPet)
+            dismiss()
+            //print(petViewModel.pets)
+        } label:{
+            ZStack {
+                RoundedRectangle(cornerRadius: 2           )
+                    .foregroundStyle(Color.appLaranjaClaro)
+                    .frame(width:200, height:50)
+                    .clipShape(RoundedRectangle(cornerRadius:10))
+                Text("Confirmar")
+                    .foregroundColor(.black)
+                    .font(.title)
+                    .bold()
+            }
+        }
+        
     }// fim View
 } //fim struct
 
 #Preview {
+    let meupet = PetModel(
+        especie: "Gato",
+        raca: "SRD",
+        nome: "Mimi",
+        nascimento: Calendar.current.date(from: DateComponents(year: 2020, month: 1, day: 1))!,
+        porte: "Pequeno",
+        sexo: "Fêmea",
+        cor: "Cinza",
+        castrado: true,
+        falecido: false
+    )
+    
+   //let viewModel = PetViewModel()
+   // @Bindable var petViewModel:PetViewModel
+    
+    //PetSalva(pet: meupet)
+}
+
+/*#Preview {
     let meupet = PetModel(
         especie: "",
         raca: "",
@@ -148,7 +163,7 @@ struct PetSalva: View {
     PetSalva(pet:meupet)
         }
     
-
+*/
 
 
     
