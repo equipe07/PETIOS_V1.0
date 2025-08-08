@@ -1,8 +1,13 @@
 import SwiftUI
-
+import SwiftData
 struct MeusPets: View {
-    var listaPets: PetViewModel = PetViewModel()
-
+    
+    //modo passando a variavel atraves das interfaces
+    //@State var listaPets = PetViewModel()
+    
+    // modo salvando no contexto
+    @Query var  listaPet: [PetModel]
+    
     var body: some View {
         NavigationStack {
             PetFundo{
@@ -11,10 +16,12 @@ struct MeusPets: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.appMarrom)
 
-                
                 List {
-                    ForEach(listaPets.pets) { petAtual in
-                        NavigationLink(destination: CadastraPet(pet: petAtual,titulo: "Editar Pet")) {
+                    ForEach(listaPet) { petAtual in
+                        NavigationLink(destination: EditaPet(pet: petAtual,titulo: "Editar Pet")
+                            //CadastraPet(listaPets:listaPets)
+                                       
+                        ) {
                             PetLIstItem(pet: petAtual)
                         }//fim do navigationlink
                     }//fim do ForEach
@@ -23,17 +30,8 @@ struct MeusPets: View {
                 .scrollContentBackground(.hidden)
                 .background(.clear)
                 Botao(nomeBotao: "Adicionar",
-                      tela: CadastraPet(pet: PetModel(
-                        especie: "",
-                        raca: "",
-                        nome: "",
-                        nascimento:Date(),
-                        porte: "",
-                        sexo: "",
-                        cor: "",
-                        castrado: false,
-                        falecido: false))
-                )
+                      tela: CadastraPet(//listaPets:listaPets
+                                       ))
                
             } // fim do petfundo
         }//fim do navigation stack

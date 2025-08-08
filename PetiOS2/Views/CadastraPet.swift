@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct CadastraPet: View {
-    @State var nomePet: String
-    @State var nascimentoPet: Date
-    @State var raçaPet: String
-    @State var especiePet: String
-    @State var portePet: String
-    @State private var corPet: String
-    @State var castradoPet: Bool
-    @State var sexoPet: String
+    //Passando a variavel
+    //@Bindable var listaPets: PetViewModel
+    //Salvando no contexto
+    @Environment(\.modelContext) private var context
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var nomePet = ""
+    @State private var nascimentoPet: Date = Date()
+    @State private var racaPet: String = ""
+    @State private var especiePet: String = ""
+    @State private var portePet: String = ""
+    @State private var corPet: String = ""
+    @State private var castradoPet: Bool = false
+    @State private var sexoPet: String = ""
     
     //Dados dos Pickers
     @State private var especies: [String] = ["Cachorro", "Gato", "Ave"]
@@ -24,31 +31,10 @@ struct CadastraPet: View {
     @State private var cores:  [String] = ["Branco", "Preto", "Cinza", "Amarelo"]
     @State private var sexos: [String] = ["Macho", "Fêmea"]
     
-    @State var titulo: String
-    
-    init(pet: PetModel, titulo: String = "Cadastrar Pet" )
-        {
-            _nomePet = State(initialValue: pet.nome)
-            _titulo = State(initialValue: titulo)
-            
-            _nascimentoPet = State(initialValue: pet.nascimento)
-           // _nascimentoPet = State(initialValue: pet.nascimento)
-            _sexoPet = State(initialValue: pet.sexo.capitalized)
-            _castradoPet = State(initialValue: pet.castrado)
-            _corPet = State(initialValue: pet.cor.capitalized)
-            _portePet = State(initialValue: pet.porte.capitalized)
-            _raçaPet = State(initialValue: pet.raca.capitalized)
-            _especiePet = State(initialValue: pet.especie.capitalized)
-        
-        
-    }
-    
-    
-    
     var body: some View {
         PetFundo {
             
-            Text(titulo)
+            Text("Cadastra Pet")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color.appMarrom)
@@ -67,7 +53,7 @@ struct CadastraPet: View {
                                 especieAtual in Text(especieAtual)
                             }
                         }
-                    Picker("Raca", selection: $raçaPet)
+                    Picker("Raca", selection: $racaPet)
                         {
                             ForEach(racas, id: \.self){
                                 racaAtual in Text(racaAtual)
@@ -101,14 +87,35 @@ struct CadastraPet: View {
                 // .navigationTitle("Cadastrar Pet")
                 
                     Button{
+                        /* Adicionando pet manualmente na variavel recebida
+                        listaPets.AddPet(especie:especiePet,
+                                            raca: raçaPet,
+                                            nome: nomePet,
+                                            nascimento:nascimentoPet,
+                                            porte: portePet,
+                                            sexo: sexoPet,
+                                            cor: corPet,
+                                            castrado: castradoPet,
+                                            falecido: false)
+                         */
+                        let novoPet = PetModel(especie: especiePet, raca: racaPet,
+                                            nome: nomePet,
+                                            nascimento: nascimentoPet,
+                                            porte: portePet,
+                                            sexo: sexoPet,
+                                            cor: corPet,
+                                            castrado: castradoPet,
+                                            falecido: false)
+                        context.insert(novoPet)
+                                        try? context.save()
+                           dismiss()
                     } label:{
                         ZStack {
                             RoundedRectangle(cornerRadius: 2           )
                                 .foregroundStyle(Color.appLaranjaEscuro)
                                 .frame(width: 100, height:40)
                                 .clipShape(RoundedRectangle(cornerRadius:10))
-                            //PetViewModel.
-                            //context.insert(PetModel(especie: <#T##String#>, raça: <#T##String#>, nome: <#T##String#>, nascimento: <#T##Date#>, porte: <#T##String#>, sexo: <#T##String#>, cor: <#T##String#>, castrado: <#T##Bool#>, falecido: <#T##Bool#>))
+                            
                             Text("Confirmar")
                                 .foregroundColor(.black)
                                 .bold()
@@ -122,7 +129,7 @@ struct CadastraPet: View {
 }
 
 
-#Preview {
+/*#Preview {
     let meupet = PetModel(
         especie: "Cachorro",
         raca: "Maltipoo",
@@ -133,5 +140,5 @@ struct CadastraPet: View {
         cor: "branco",
         castrado: false,
         falecido: false)
-    CadastraPet(pet:meupet)
-}
+    CadastraPet()
+}*/

@@ -7,21 +7,14 @@
 
 import SwiftUI
 
-struct PetSalva: View {
-    //@Environment(\.modelContext) private var context
-    //@Bindable var viewModel: PetViewModel
-    //@Binding viewModel: PetViewModel
-    //@Bindable petViewModel: PetViewModel()
-    @Bindable var listaPets: PetViewModel
+struct EditaPet: View {
+   
+     // Passando variavel entre as interfaces
+    // @Bindable var listaPets: PetViewModel
+    //editando no contexto
+    @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @State var nomePet: String
-    @State var nascimentoPet: Date
-    @State var racaPet: String
-    @State var especiePet: String
-    @State var portePet: String
-    @State var corPet: String
-    @State var castradoPet: Bool
-    @State var sexoPet: String
+    
     
     //Dados dos Pickers
     @State private var especies: [String] = ["Cachorro", "Gato", "Ave"]
@@ -33,21 +26,10 @@ struct PetSalva: View {
     @State var titulo: String
     @State var petAtual:PetModel
        
-    init(pet: PetModel, titulo: String = "Cadastrar Pet", listaPets: inout PetViewModel) {
+    init(pet: PetModel, titulo: String = "Cadastrar Pet"//, listaPets: inout PetViewModel
+         ) {
         _petAtual = State(initialValue: pet)
-        //_listaPets = petViewModel
-        _nomePet = State(initialValue: pet.nome)
         _titulo = State(initialValue: titulo)
-        _nascimentoPet = State(initialValue: pet.nascimento)
-        // _nascimentoPet = State(initialValue: pet.nascimento)
-        _sexoPet = State(initialValue: pet.sexo.capitalized)
-        _castradoPet = State(initialValue: pet.castrado)
-        _corPet = State(initialValue: pet.cor.capitalized)
-        _portePet = State(initialValue: pet.porte.capitalized)
-        _racaPet = State(initialValue: pet.raca.capitalized)
-        _especiePet = State(initialValue: pet.especie.capitalized)
-        //self.petViewModel = viewModel
-        self.listaPets = listaPets
     }
     
     var body: some View {
@@ -57,43 +39,43 @@ struct PetSalva: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color.appMarrom)
             Form{
-                TextField(text: $nomePet, prompt: Text("Digite o nome do pet")) {
+                TextField(text: $petAtual.nome, prompt: Text("Digite o nome do pet")) {
                     Text("Nome do Pet")
                 }.disableAutocorrection(true)
                 //}//Section(header: Text("Nome do Pet"))
-                DatePicker("Data de Nascimento", selection: $nascimentoPet, displayedComponents: .date)
-                Picker("Espécie", selection: $especiePet)
+                DatePicker("Data de Nascimento", selection: $petAtual.nascimento, displayedComponents: .date)
+                Picker("Espécie", selection: $petAtual.especie)
                 {
                     ForEach(especies, id: \.self){
                         especieAtual in Text(especieAtual)
                     }
                 }
-                Picker("Raca", selection: $racaPet)
+                Picker("Raca", selection: $petAtual.raca)
                 {
                     ForEach(racas, id: \.self){
                         racaAtual in Text(racaAtual)
                     }
                     
                 }
-                Picker("Sexo", selection: $sexoPet)
+                Picker("Sexo", selection: $petAtual.sexo)
                 {
                     
                     ForEach(sexos, id: \.self){
                         sexo in Text(sexo)
                     }
                 }
-                Picker("Porte", selection: $portePet)
+                Picker("Porte", selection: $petAtual.porte)
                 {
                     ForEach(portes, id: \.self){
                         porteAtual in Text(porteAtual)
                     }                        }
-                Picker("Cor", selection: $corPet)
+                Picker("Cor", selection: $petAtual.cor)
                 {
                     ForEach(cores, id: \.self){
                         corAtual in Text(corAtual)
                     }
                 }
-                Toggle("Castrado", isOn: $castradoPet)
+                Toggle("Castrado", isOn: $petAtual.castrado)
                 
             } //Form
             .frame(maxWidth: 500)
@@ -103,7 +85,7 @@ struct PetSalva: View {
         } //fim Form
         
         Button{
-            let novoPet = PetModel(especie: especiePet, raca: racaPet,
+            /*let novoPet = PetModel(especie: especiePet, raca: racaPet,
                                 nome: nomePet,
                                 nascimento: nascimentoPet,
                                 porte: portePet,
@@ -111,7 +93,10 @@ struct PetSalva: View {
                                 cor: corPet,
                                 castrado: castradoPet,
                                 falecido: false)
-            listaPets.editPet(original: petAtual, updated: novoPet)
+           //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)*/
+            
+            try? context.save()
+            
             dismiss()
             //print(petViewModel.pets)
         } label:{

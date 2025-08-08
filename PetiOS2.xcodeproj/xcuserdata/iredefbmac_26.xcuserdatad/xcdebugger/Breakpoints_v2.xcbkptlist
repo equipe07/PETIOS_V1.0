@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "init(especie:raca:nome:nascimento:porte:sexo:cor:castrado:falecido:)"
-            landmarkType = "7">
+            landmarkName = "PetModel"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,57 +50,13 @@
             endingLineNumber = "27"
             landmarkName = "sharedModelContainer"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "270052E8-7178-4E7D-9A11-E5CC3EB2554B - cf34ec0e5de68f3b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftData.ModelContainer in variable initialization expression of PetiOS2.PetiOS2App.sharedModelContainer : SwiftData.ModelContainer"
-                  moduleName = "PetiOS2.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iredefbmac_26/Desktop/Dani/Testes_Dani/PetiOS2/PetiOS2/PetiOS2App.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27">
-               </Location>
-               <Location
-                  uuid = "270052E8-7178-4E7D-9A11-E5CC3EB2554B - ce2a774cb56e37c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PetiOS2.PetiOS2App.init() -&gt; PetiOS2.PetiOS2App"
-                  moduleName = "PetiOS2.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iredefbmac_26/Desktop/Dani/Testes_Dani/PetiOS2/PetiOS2/PetiOS2App.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27">
-               </Location>
-               <Location
-                  uuid = "270052E8-7178-4E7D-9A11-E5CC3EB2554B - a7438e49e90be06e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "default argument 0 of PetiOS2.PetiOS2App.init(sharedModelContainer: SwiftData.ModelContainer) -&gt; PetiOS2.PetiOS2App"
-                  moduleName = "PetiOS2.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/iredefbmac_26/Desktop/Dani/Testes_Dani/PetiOS2/PetiOS2/PetiOS2App.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4A99F847-A70E-45D0-9F8B-1D4BEA6FE6EA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PetiOS2/Views/TelaPrincipal.swift"
@@ -110,6 +66,54 @@
             endingLineNumber = "16"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "872CFED6-99B9-454F-A8C1-847B3695E025"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PetiOS2/Views/PetSalva.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6504BB90-F94E-4640-98C0-C4DE60E40545"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PetiOS2/Views/PetSalva.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96BAC1C2-6A92-48B2-9E97-98D74351A514"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PetiOS2/ViewModels/PetViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "AddPet(especie:raca:nome:nascimento:porte:sexo:cor:castrado:falecido:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
