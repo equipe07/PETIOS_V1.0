@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+
 struct MeusPets: View {
     
     //modo passando a variavel atraves das interfaces

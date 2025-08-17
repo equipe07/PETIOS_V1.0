@@ -25,13 +25,13 @@ struct PetFundo<Content: View>: View {
             Circle()
                 .fill(Color.orange)
                 .frame(width: 200, height: 200) // Ajuste o tamanho do círculo conforme necessário
-                .offset(x: UIScreen.main.bounds.width / 2 - 50, y: -UIScreen.main.bounds.height / 2 + 50) // Posiciona no canto superior direito
+                .offset(x: UIScreen.main.bounds.width / 2 - 40, y: -UIScreen.main.bounds.height / 2 + 40) // Posiciona no canto superior direito
 
             // Círculo laranja no canto inferior esquerdo
             Circle()
                 .fill(Color.orange)
                 .frame(width: 200, height: 200) // Ajuste o tamanho do círculo para ser o mesmo
-                .offset(x: -UIScreen.main.bounds.width / 2 + 50, y: UIScreen.main.bounds.height / 2 - 50) // Posiciona no canto inferior esquerdo
+                .offset(x: -UIScreen.main.bounds.width / 2 + 40, y: UIScreen.main.bounds.height / 2 - 40) // Posiciona no canto inferior esquerdo
 
             VStack {
                 Spacer().frame(height: 100)

@@ -27,6 +27,7 @@ struct PetiOS2App: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             PetModel.self,
+            TutorModel.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
