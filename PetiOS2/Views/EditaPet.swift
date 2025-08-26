@@ -84,28 +84,49 @@ struct EditaPet: View {
             
         } //fim Form
         
-        Button{
-            
-           //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)
-            
-            try? context.save()
-            
-            dismiss()
-            //print(petViewModel.pets)
-        } label:{
-            ZStack {
-                RoundedRectangle(cornerRadius: 2           )
-                    .foregroundStyle(Color.appLaranja)
-                    .frame(width:100, height:40)
-                    .clipShape(RoundedRectangle(cornerRadius:10))
-                Text("Salvar")
-                    .foregroundColor(.white)
-                    .bold()
-                    .padding(.bottom, 2)
-            }
-        }
         
+        HStack{
+            //Inserindo um botao para deletar pet
+            Button {
+                        context.delete(petAtual)
+                        try? context.save()
+                        dismiss()
+                    } label: {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(Color.appPreto)
+                            .font(.system(size: 30))
+                    } //fim do Button deletar
+              
+            .padding(.leading, 40)//para afastar da borda esquerda
+            
+            Spacer()
+            
+            Button{
+                
+                //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)
+                
+                try? context.save()
+                
+                dismiss()
+                //print(petViewModel.pets)
+            } label:{
+                ZStack {
+                    RoundedRectangle(cornerRadius: 2           )
+                        .foregroundStyle(Color.appLaranja)
+                        .frame(width:100, height:40)
+                        .clipShape(RoundedRectangle(cornerRadius:10))
+                    Text("Salvar")
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .padding(.bottom, 2)
+                }//fim da ZStack
+            } //fim do button salvar
+            .padding(.trailing, 20) //para afastar da borda direita
+        } //fim da HStack
+           // .padding(.bottom, 20) //sobe um pouco os botoes
+       
     }// fim View
+        
 } //fim struct
 
 #Preview {
