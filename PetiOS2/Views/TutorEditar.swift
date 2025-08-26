@@ -96,6 +96,7 @@ struct TutorEditar: View {
             
         } //fim Form
         
+       
         Button{
             try? context.save()
             
@@ -104,12 +105,11 @@ struct TutorEditar: View {
         } label:{
             ZStack {
                 RoundedRectangle(cornerRadius: 2           )
-                    .foregroundStyle(Color.appLaranjaClaro)
-                    .frame(width:200, height:50)
+                    .foregroundStyle(Color.appLaranja)
+                    .frame(width:150, height:40)
                     .clipShape(RoundedRectangle(cornerRadius:10))
                 Text("Alterar Dados")
-                    .foregroundColor(.black)
-                    .font(.title)
+                    .foregroundColor(.white)
                     .bold()
             }
         }

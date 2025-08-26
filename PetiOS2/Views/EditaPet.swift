@@ -85,15 +85,8 @@ struct EditaPet: View {
         } //fim Form
         
         Button{
-            /*let novoPet = PetModel(especie: especiePet, raca: racaPet,
-                                nome: nomePet,
-                                nascimento: nascimentoPet,
-                                porte: portePet,
-                                sexo: sexoPet,
-                                cor: corPet,
-                                castrado: castradoPet,
-                                falecido: false)
-           //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)*/
+            
+           //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)
             
             try? context.save()
             
@@ -102,13 +95,13 @@ struct EditaPet: View {
         } label:{
             ZStack {
                 RoundedRectangle(cornerRadius: 2           )
-                    .foregroundStyle(Color.appLaranjaClaro)
-                    .frame(width:200, height:50)
+                    .foregroundStyle(Color.appLaranja)
+                    .frame(width:100, height:40)
                     .clipShape(RoundedRectangle(cornerRadius:10))
-                Text("Confirmar")
-                    .foregroundColor(.black)
-                    .font(.title)
+                Text("Salvar")
+                    .foregroundColor(.white)
                     .bold()
+                    .padding(.bottom, 2)
             }
         }
         

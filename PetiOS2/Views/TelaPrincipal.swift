@@ -41,7 +41,7 @@ struct TelaPrincipal: View {
                         .foregroundColor(.black)
                         .font(.title)
                         .bold()
-                        .padding(2)
+                        .padding(10)
                 }
                 }
                 BotaoPrincipal(nomeBotao: "Cadastrar Pet",
