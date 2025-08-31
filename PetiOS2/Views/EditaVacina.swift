@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditaPet: View {
+struct EditaVacina: View {
    
      // Passando variavel entre as interfaces
     // @Bindable var listaPets: PetViewModel
@@ -16,19 +16,13 @@ struct EditaPet: View {
     @Environment(\.dismiss) private var dismiss
     
     
-    //Dados dos Pickers
-    @State private var especies: [String] = ["Cachorro", "Gato", "Ave"]
-    @State private var racas:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo"]
-    @State private var portes:  [String] = ["Pequeno", "Médio", "Grande"]
-    @State private var cores:  [String] = ["Branco", "Preto", "Cinza", "Amarelo"]
-    @State private var sexos: [String] = ["Macho", "Fêmea"]
-    
+   
     @State var titulo: String
-    @State var petAtual:PetModel
+    @State var vacinaAtual: VacinaModel
        
-    init(pet: PetModel, titulo: String = "Editar Pet"//, listaPets: inout PetViewModel
+    init(vacina: VacinaModel, titulo: String = "Editar Vacina"//, listaPets: inout PetViewModel
          ) {
-        _petAtual = State(initialValue: pet)
+        _vacinaAtual = State(initialValue: vacina)
         _titulo = State(initialValue: titulo)
     }
     
@@ -39,43 +33,12 @@ struct EditaPet: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color.appMarrom)
             Form{
-                TextField(text: $petAtual.nome, prompt: Text("Digite o nome do pet")) {
-                    Text("Nome do Pet")
+                TextField(text: $vacinaAtual.nomeVacina, prompt: Text("Digite o nome da vacina")) {
+                    Text("Vacina:")
                 }.disableAutocorrection(true)
                 //}//Section(header: Text("Nome do Pet"))
-                DatePicker("Data de Nascimento", selection: $petAtual.nascimento, displayedComponents: .date)
-                Picker("Espécie", selection: $petAtual.especie)
-                {
-                    ForEach(especies, id: \.self){
-                        especieAtual in Text(especieAtual)
-                    }
-                }
-                Picker("Raca", selection: $petAtual.raca)
-                {
-                    ForEach(racas, id: \.self){
-                        racaAtual in Text(racaAtual)
-                    }
-                    
-                }
-                Picker("Sexo", selection: $petAtual.sexo)
-                {
-                    
-                    ForEach(sexos, id: \.self){
-                        sexo in Text(sexo)
-                    }
-                }
-                Picker("Porte", selection: $petAtual.porte)
-                {
-                    ForEach(portes, id: \.self){
-                        porteAtual in Text(porteAtual)
-                    }                        }
-                Picker("Cor", selection: $petAtual.cor)
-                {
-                    ForEach(cores, id: \.self){
-                        corAtual in Text(corAtual)
-                    }
-                }
-                Toggle("Castrado", isOn: $petAtual.castrado)
+                DatePicker("Data da Vacinação:", selection: $vacinaAtual.dataVacina, displayedComponents: .date)
+                DatePicker("Revacinar em:", selection: $vacinaAtual.dataProximaVacina, displayedComponents: .date)
                 
             } //Form
             .frame(maxWidth: 500)
@@ -88,7 +51,7 @@ struct EditaPet: View {
         HStack{
             //Inserindo um botao para deletar pet
             Button {
-                        context.delete(petAtual)
+                        context.delete(vacinaAtual)
                         try? context.save()
                         dismiss()
                     } label: {
@@ -103,12 +66,10 @@ struct EditaPet: View {
             
             Button{
                 
-                //editando dentro da variavel listaPets.editPet(original: petAtual, updated: novoPet)
-                
                 try? context.save()
                 
                 dismiss()
-                //print(petViewModel.pets)
+               
             } label:{
                 ZStack {
                     RoundedRectangle(cornerRadius: 2           )

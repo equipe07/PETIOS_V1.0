@@ -11,12 +11,12 @@ import SwiftData
 @Model
 class VacinaModel{
     var id:UUID = UUID()
-    var nome: String
+    var nomeVacina: String
     var dataVacina: Date
     var dataProximaVacina: Date
     
-    init(nome: String, dataVacina: Date, dataProximaVacina: Date) {
-        self.nome = nome
+    init(nomeVacina: String, dataVacina: Date, dataProximaVacina: Date) {
+        self.nomeVacina = nomeVacina
         self.dataVacina = dataVacina
         self.dataProximaVacina = dataProximaVacina
     }

@@ -26,15 +26,14 @@ struct MeusPets: View {
                     List {
                         ForEach(listaPet) { petAtual in
                             NavigationLink(
-                                destination: EditaPet(pet: petAtual, titulo: "Editar Pet")
-                            ) {
+                                destination: TelaPet(pet: petAtual)) {
                                 PetLIstItem(pet: petAtual)
                             }
                         }
                     }
                     .scrollContentBackground(.hidden)
                     .background(.clear)
-                    .frame(maxWidth: 450, maxHeight: 800)
+                    .frame(maxWidth: 450, maxHeight: 700)
                    // .navigationTitle("Meus Pets")
                    // .navigationBarTitleDisplayMode(.inline)
                     //.safeAreaInset(edge: .bottom){

@@ -32,7 +32,8 @@ struct PetLIstItem: View {
                 
             }
             
-            Text("Data de Nascimento: \(pet.nascimento)")
+            Text("Data de Nascimento: \(pet.nascimento)")// trocar por idade
+                
         }
         }
     }

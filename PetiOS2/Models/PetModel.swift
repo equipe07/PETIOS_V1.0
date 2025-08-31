@@ -20,6 +20,7 @@ class PetModel{
     var cor: String
     var castrado: Bool
     var falecido: Bool
+    var vacinaPet: [VacinaModel] = []
     
     
     init(especie: String, raca: String, nome: String, nascimento: Date, porte: String, sexo: String, cor: String, castrado: Bool, falecido: Bool) {
