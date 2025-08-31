@@ -1,10 +1,3 @@
-//
-//  TPPet.swift
-//  PetiOSv4
-//
-//  Created by iredefbmac_26 on 02/07/25.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -13,48 +6,59 @@ struct TelaPrincipal: View {
     @Environment(\.modelContext) private var context
 
     
-    var body: some View {
+    var body: some View
+    {
         
-        NavigationStack {
-        PetFundo {
+        NavigationStack
+        {
+           PetFundo
+           {
             
-            Image("img6")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 200, height: 200)
-            .padding(.leading, 200)
-            .offset(x: -6)
-            .offset(y: 125)
-            .foregroundColor(.gray)
-            
-            VStack{
+                /*Image("img6")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding(.leading, 200)
+                .offset(x: -6)
+                .offset(y: 125)
+                .foregroundColor(.gray)*/
                 
-                NavigationLink(destination: MeusPets()) { ZStack {
-                    RoundedRectangle(cornerRadius: 2           )
-                        .foregroundStyle(Color.appLaranjaClaro)
-                        .frame(width:300, height:50)
+                VStack
+                {
+                    Spacer()
+                    /*NavigationLink(destination: MeusPets())
+                    {
+                        ZStack
+                        {
+                        RoundedRectangle(cornerRadius: 2           )
+                            .foregroundStyle(Color.appLaranjaClaro)
+                            .frame(width:300, height:50)
+                        
+                        
+                        
+                            .clipShape(RoundedRectangle(cornerRadius:10))
+                        Text("Meus Pets")
+                            .foregroundColor(.black)
+                            .font(.title)
+                            .bold()
+                            .padding(10)
+                        }
+                    }*/
+                    BotaoPrincipal(nomeBotao: "Meus Pets", tela: MeusPets(),icon:"cachorrinho")
                     
-                    
-                    
-                        .clipShape(RoundedRectangle(cornerRadius:10))
-                    Text("Meus Pets")
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .bold()
-                        .padding(10)
-                }
-                }
-                BotaoPrincipal(nomeBotao: "Cadastrar Pet",
-                               tela:CadastraPet())
-                
-                
-                if let tutor = listaTutor.first{
-                    BotaoPrincipal(nomeBotao: "Dados Tutor",
-                          tela:TutorEditar(tutor: tutor))
-            }
+                    BotaoPrincipal(nomeBotao: "Cadastrar Pet",
+                                   tela:CadastraPet())
+                                       
+                    if let tutor = listaTutor.first
+                    {
+                        BotaoPrincipal(nomeBotao: "Dados Tutor",
+                              tela:TutorEditar(tutor: tutor))
+                    }
+                    Spacer()
                    
-                }
-            } //fim do navigationstack
+                }//.border(Color.red, width: 2)//fim do vstack
+            } //fim do petfundo
+        }// fim do navigationstack
         .onAppear {
                 if listaTutor.isEmpty {
                     let novoTutor = TutorModel(
@@ -76,11 +80,9 @@ struct TelaPrincipal: View {
                     try? context.save()
                 }
             }
-        }
     }
 }
     
 #Preview {
         TelaPrincipal()
 }
-

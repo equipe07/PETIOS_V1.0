@@ -15,33 +15,34 @@ struct BotaoPrincipal: View {
     let texto: String
     let largura: CGFloat
     let destino: AnyView
-    //let icon:String
+    let icon:String
     
     // Construtor com valor padrão para "tela"
     init(
         nomeBotao: String,
         largura: CGFloat = 100,
-        tela: some View = EmptyView()//,
-        //icon: String = "img6"
+        tela: some View = EmptyView(),
+        icon: String = "img6"
         
     ) {
         self.texto = nomeBotao
         self.largura = largura
         self.destino = AnyView(tela)
-        //self.icon=icon
+        self.icon=icon
     }
     
     var body: some View {
-        /*VStack{
+        ZStack
+        {
             Image(icon)
             .resizable()
             .scaledToFit()
-            .frame(width: 200, height: 200)
+            .frame(width: 200, height: 100)
             .padding(.leading, 200)
             .offset(x: -6)
-            .offset(y: 125)
+            .offset(y: -40)
             .foregroundColor(.gray)
-        */
+        
         HStack {
             
             NavigationLink(destination: destino) {
@@ -58,7 +59,7 @@ struct BotaoPrincipal: View {
                     }
                 }
             }
-        //}
+        }
     }
 }
 

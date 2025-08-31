@@ -42,7 +42,7 @@ struct CadastraVacina: View
                 DatePicker("Data da Próxima Vacina", selection: $dataProximaVacina, displayedComponents: .date)
                 
             } //Form
-            .frame(maxWidth: 500)
+            .frame(maxWidth: 450)
             .scrollContentBackground(.hidden)
             .background(.clear)
             // .navigationTitle("Cadastrar Pet")

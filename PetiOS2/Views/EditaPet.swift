@@ -78,7 +78,7 @@ struct EditaPet: View {
                 Toggle("Castrado", isOn: $petAtual.castrado)
                 
             } //Form
-            .frame(maxWidth: 500)
+            .frame(maxWidth: 450)
             .scrollContentBackground(.hidden)
             .background(.clear)
             
