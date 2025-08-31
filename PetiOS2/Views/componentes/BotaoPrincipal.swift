@@ -34,14 +34,7 @@ struct BotaoPrincipal: View {
     var body: some View {
         ZStack
         {
-            Image(icon)
-            .resizable()
-            .scaledToFit()
-            .frame(width: 200, height: 100)
-            .padding(.leading, 200)
-            .offset(x: -6)
-            .offset(y: -40)
-            .foregroundColor(.gray)
+            
         
         HStack {
             
@@ -52,6 +45,7 @@ struct BotaoPrincipal: View {
                         .foregroundStyle(Color.appLaranjaClaro)
                         .frame(width:300, height:50)
                         .clipShape(RoundedRectangle(cornerRadius:10))
+                        //.border(Color.black,width:1)
                     Text(texto)
                         .foregroundColor(.black)
                         .font(.title)
@@ -59,6 +53,14 @@ struct BotaoPrincipal: View {
                     }
                 }
             }
+            Image(icon)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200, height: 100)
+            .padding(.leading, 200)
+            .offset(x: -6)
+            .offset(y: -40)
+            .foregroundColor(.gray)
         }
     }
 }

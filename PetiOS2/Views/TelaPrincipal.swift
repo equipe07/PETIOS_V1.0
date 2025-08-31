@@ -47,7 +47,7 @@ struct TelaPrincipal: View {
                     BotaoPrincipal(nomeBotao: "Meus Pets", tela: MeusPets(),icon:"cachorrinho")
                     
                     BotaoPrincipal(nomeBotao: "Cadastrar Pet",
-                                   tela:CadastraPet())
+                                   tela:CadastraPet(),icon:"catoi")
                                        
                     if let tutor = listaTutor.first
                     {
