@@ -29,10 +29,10 @@ struct TelaVacinas: View
                 }
                      .scrollContentBackground(.hidden)
                      .background(.clear)
-                     .frame(maxWidth: 450, maxHeight: 700)
+                     .frame(maxWidth: 450, maxHeight: 600)
                      
                     // 🔹 Botão para adicionar vacina ao pet
-                    NavigationLink(destination: CadastraVacina(pet:pet)) {
+                    /*NavigationLink(destination: CadastraVacina(pet:pet)) {
                         Label("Adicionar vacina", systemImage: "syringe")
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -40,13 +40,13 @@ struct TelaVacinas: View
                             .foregroundColor(.black)
                             .bold()
                             .cornerRadius(10)
-                    }
+                    }*/
                     
-                    /*Botao(
+                    Botao(
                      nomeBotao: "Adicionar",
                      tela: CadastraVacina(pet:pet)
                      )
-                     .padding(.bottom, 10)*/
+                     //.padding(.bottom, 10)
                 }
             }
     }

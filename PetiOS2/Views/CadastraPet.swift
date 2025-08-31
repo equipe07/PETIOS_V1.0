@@ -82,7 +82,7 @@ struct CadastraPet: View {
                     Toggle("Castrado", isOn: $castradoPet)
                     
                 } //Form
-                .frame(maxWidth: 500)
+                .frame(maxWidth: 450)
                 .scrollContentBackground(.hidden)
                 .background(.clear)
                 // .navigationTitle("Cadastrar Pet")

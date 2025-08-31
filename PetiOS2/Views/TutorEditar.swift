@@ -90,7 +90,7 @@ struct TutorEditar: View {
                 }.disableAutocorrection(true)
                 
             } //Form
-            .frame(maxWidth: 500)
+            .frame(maxWidth: 450)
             .scrollContentBackground(.hidden)
             .background(.clear)
             

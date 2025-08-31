@@ -11,7 +11,7 @@ struct PetLIstItem: View {
     var pet: PetModel
     var body: some View {
         HStack{
-            switch pet.especie {
+            switch pet.especie.lowercased() {
             case "cachorro":
                   Image(systemName: "dog")
             case "gato":

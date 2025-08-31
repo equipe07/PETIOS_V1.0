@@ -35,9 +35,9 @@ struct Botao: View {
                         .foregroundStyle(Color.appLaranjaEscuro)
                         .frame(width: largura, height: 40)
                     Text(texto)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .bold()
-                        .padding(2)
+                        .padding(.bottom, 2)
                 }
             }
         }
