@@ -17,7 +17,7 @@ struct PetLIstItem: View {
             case "gato":
                 Image(systemName: "cat")
             default:
-                Image( systemName: "camera.metering.unknown")
+                Image( systemName: "bird")
             }
             VStack (alignment:.leading ){Text(pet.nome)
                     .bold()
@@ -31,8 +31,11 @@ struct PetLIstItem: View {
                 Text(pet.sexo)
                 
             }
-            
-            Text("Data de Nascimento: \(pet.nascimento)")// trocar por idade
+                let hoje = Date.now
+            //Text("Data de Nascimento: \(pet.nascimento)")
+                // trocando por idade
+                
+                Text("Idade: \(Calendar.current.dateComponents([.year], from: pet.nascimento, to: hoje).year ?? 0) anos")
                 
         }
         }

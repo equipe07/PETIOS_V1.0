@@ -90,7 +90,7 @@ struct TutorEditar: View {
                 }.disableAutocorrection(true)
                 
             } //Form
-            .frame(maxWidth: 450)
+            .frame(maxWidth: 450,maxHeight: 400)
             .scrollContentBackground(.hidden)
             .background(.clear)
             
@@ -105,7 +105,7 @@ struct TutorEditar: View {
         } label:{
             ZStack {
                 RoundedRectangle(cornerRadius: 2           )
-                    .foregroundStyle(Color.appLaranja)
+                    .foregroundStyle(Color.appMarrom)
                     .frame(width:150, height:40)
                     .clipShape(RoundedRectangle(cornerRadius:10))
                 Text("Alterar Dados")

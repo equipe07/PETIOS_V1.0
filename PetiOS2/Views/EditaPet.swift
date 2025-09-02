@@ -18,7 +18,10 @@ struct EditaPet: View {
     
     //Dados dos Pickers
     @State private var especies: [String] = ["Cachorro", "Gato", "Ave"]
-    @State private var racas:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo"]
+    @State private var racasCachorros:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo", "Labrador", "Outra","Pug", "Indefinido"]
+    @State private var racasAves: [String] = ["Papagaio","Periquito","Calopsita","Outros"]
+    @State private var racasGatos:  [String] = ["Persa", "Siamês", "Maine Coon", "Ragdoll", "Sphynx", "Outro","British Shorthair", "American Shorthair", "Bengal"]
+    
     @State private var portes:  [String] = ["Pequeno", "Médio", "Grande"]
     @State private var cores:  [String] = ["Branco", "Preto", "Cinza", "Amarelo"]
     @State private var sexos: [String] = ["Macho", "Fêmea"]
@@ -30,6 +33,7 @@ struct EditaPet: View {
          ) {
         _petAtual = State(initialValue: pet)
         _titulo = State(initialValue: titulo)
+        //_racas=racasCachorros
     }
     
     var body: some View {
@@ -52,9 +56,23 @@ struct EditaPet: View {
                 }
                 Picker("Raca", selection: $petAtual.raca)
                 {
-                    ForEach(racas, id: \.self){
-                        racaAtual in Text(racaAtual)
+                    
+                    
+                    switch petAtual.especie.lowercased() {
+                    case "cachorro":
+                        ForEach(racasCachorros, id: \.self){
+                            racaAtual in Text(racaAtual)
+                        }
+                    case "gato":
+                        ForEach(racasGatos, id: \.self){
+                            racaAtual in Text(racaAtual)
+                        }
+                    default:
+                        ForEach(racasAves, id: \.self){
+                            racaAtual in Text(racaAtual)
+                        }
                     }
+                    
                     
                 }
                 Picker("Sexo", selection: $petAtual.sexo)
@@ -85,7 +103,7 @@ struct EditaPet: View {
         } //fim Form
         
         
-        HStack{
+        /*HStack{
             //Inserindo um botao para deletar pet
             Button {
                         context.delete(petAtual)
@@ -98,8 +116,8 @@ struct EditaPet: View {
                     } //fim do Button deletar
               
             .padding(.leading, 40)//para afastar da borda esquerda
-            
-            Spacer()
+           
+            Spacer() */
             
             Button{
                 
@@ -112,7 +130,7 @@ struct EditaPet: View {
             } label:{
                 ZStack {
                     RoundedRectangle(cornerRadius: 2           )
-                        .foregroundStyle(Color.appLaranja)
+                        .foregroundStyle(Color.appMarrom)
                         .frame(width:100, height:40)
                         .clipShape(RoundedRectangle(cornerRadius:10))
                     Text("Salvar")
@@ -122,7 +140,7 @@ struct EditaPet: View {
                 }//fim da ZStack
             } //fim do button salvar
             .padding(.trailing, 20) //para afastar da borda direita
-        } //fim da HStack
+        //} //fim da HStack
            // .padding(.bottom, 20) //sobe um pouco os botoes
        
     }// fim View

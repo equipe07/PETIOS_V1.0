@@ -26,7 +26,10 @@ struct CadastraPet: View {
     
     //Dados dos Pickers
     @State private var especies: [String] = ["Cachorro", "Gato", "Ave"]
-    @State private var racas:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo"]
+    //@State private var racas:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo"]
+    @State private var racasCachorros:  [String] = ["Dachshund", "Poodle", "Shih Tzu", "SRD", "Maltipoo", "Labrador", "Outra","Pug", "Indefinido"]
+    @State private var racasAves: [String] = ["Papagaio","Periquito","Calopsita","Outros"]
+    @State private var racasGatos:  [String] = ["Persa", "Siamês", "Maine Coon", "Ragdoll", "Sphynx", "Outro","British Shorthair", "American Shorthair", "Bengal"]
     @State private var portes:  [String] = ["Pequeno", "Médio", "Grande"]
     @State private var cores:  [String] = ["Branco", "Preto", "Cinza", "Amarelo"]
     @State private var sexos: [String] = ["Macho", "Fêmea"]
@@ -56,8 +59,22 @@ struct CadastraPet: View {
                     }
                     Picker("Raca", selection: $racaPet)
                     {
-                        ForEach(racas, id: \.self){
+                        /*ForEach(racas, id: \.self){
                             racaAtual in Text(racaAtual)
+                        }*/
+                        switch especiePet.lowercased() {
+                        case "cachorro":
+                            ForEach(racasCachorros, id: \.self){
+                                racaAtual in Text(racaAtual)
+                            }
+                        case "gato":
+                            ForEach(racasGatos, id: \.self){
+                                racaAtual in Text(racaAtual)
+                            }
+                        default:
+                            ForEach(racasAves, id: \.self){
+                                racaAtual in Text(racaAtual)
+                            }
                         }
                         
                     }

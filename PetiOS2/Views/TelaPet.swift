@@ -3,7 +3,9 @@ import SwiftUI
 
 struct TelaPet: View {
     var pet: PetModel
-    
+   
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
@@ -31,13 +33,13 @@ struct TelaPet: View {
                     Spacer()
                     
                     // Botões no final da tela
-                    HStack {
+                    VStack {
                         // Botão Editar
                         NavigationLink(destination: EditaPet(pet: pet)) {
                             Label("Editar", systemImage: "square.and.pencil")
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: 200)
                                 .padding()
-                                .background(Color.appMarrom)
+                                .background(Color.appLaranjaEscuro)
                                 .foregroundColor(.white)
                                 .bold()
                                 .cornerRadius(10)
@@ -46,15 +48,35 @@ struct TelaPet: View {
                         // Botão Vacinas
                         NavigationLink(destination: TelaVacinas(pet:pet)) {
                             Label("Vacinas", systemImage: "syringe")
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: 200)
                                 .padding()
-                                .background(Color.appLaranjaEscuro)
+                                .background(Color.appMarrom)
                                 .foregroundColor(.black)
                                 .bold()
                                 .cornerRadius(10)
                         }
-                    }
-                    .padding(.horizontal)
+                        
+                        Spacer()
+                        
+                        HStack{
+                            Button {
+                                        context.delete(pet)
+                                        try? context.save()
+                                        dismiss()
+                                    } label: {
+                                        Image(systemName: "trash.fill")
+                                            .foregroundColor(Color.appPreto)
+                                            .font(.system(size: 30))
+                                    } //fim do Button deletar
+                              
+                            .padding(.leading, 70)//para afastar da borda esquerda
+                            Spacer()
+                        }
+                        
+                       
+                        }.padding(.horizontal)
+                       // .border(Color.red, width: 1)
+                        
                 }
                // .navigationTitle("Detalhes do Pet")
             }
